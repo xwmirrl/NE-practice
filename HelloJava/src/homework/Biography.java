@@ -36,7 +36,6 @@ class Person {
     private int age;
     private String job;
     private String country;
-    boolean flag = false;
 
     Person(String name, int age, String job, String country) {
         this.age = age;
