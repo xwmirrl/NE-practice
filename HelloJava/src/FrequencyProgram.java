@@ -1,4 +1,4 @@
-    import java.util.Arrays;
+
     import java.util.Scanner;
 
     public class FrequencyProgram {
@@ -15,28 +15,19 @@
 
 
         static void frequency(int[] x) {
+            int[] counts = new int[10];
 
-            Arrays.sort(x);
-            int counter;
-
-            for (int i = 0; i < x.length; i++) {
-                counter = 0;
-                if (x[i] == 0 || x[i] != x[i - 1]) {
-                    for (int j : x) {
-                        if (x[i] == j) {
-                            counter += 1;
-                        }
-                    }
-                }
-                else {
-                    continue;
-                }
-
-                if (counter > 1) {
-                    System.out.printf("%d -> %d раза\n", x[i], counter);
-                }
-
+            for (int num : x) {
+                counts[num]++;
             }
+
+            for (int i = 0; i < counts.length; i++) {
+                if (counts[i] > 1) {
+                    System.out.printf("%d -> %d раза\n", i, counts[i]);
+                }
+            }
+
+
 
         }
 

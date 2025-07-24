@@ -4,7 +4,7 @@ public class BookCatalog {
 
         Publication[] books = {new Book("To Kill a Mockingbird", 1960, "Harper Lee"), new Book("Harry Potter and the Philosopher’s Stone", 1997, "J. K. Rowling"), new Book("The Road", 2006, "Cormac McCarthy")};
         for (Publication book : books) {
-            book.getInfo();
+            System.out.println(book.getInfo());
         }
         for (Publication book : books) {
             if (((ClassicCheckable) book).isClassic()) {
@@ -18,23 +18,23 @@ public class BookCatalog {
 
 abstract class Publication {
 
-    protected String title;
-    protected int year;
+    private String title;
+    private int year;
 
     Publication(String title, int year) {
         this.title = title;
         this.year = year;
     }
 
-    String getTitle() {
+    public String getTitle() {
         return title;
     }
 
-    int getYear() {
+    public int getYear() {
         return year;
     }
 
-    abstract void getInfo();
+    abstract public String getInfo();
 
 }
 
@@ -44,7 +44,7 @@ interface ClassicCheckable {
 
 class Book extends Publication implements ClassicCheckable {
 
-    String author;
+    private String author;
 
     Book(String title, int year, String author) {
         super(title, year);
@@ -52,12 +52,12 @@ class Book extends Publication implements ClassicCheckable {
     }
 
     @Override
-    void getInfo() {
-        System.out.printf("Книга: %s, Автор: %s, Год: %d\n", title, author, year);
+    public String getInfo() {
+        return "Книга: " + getTitle() + ", год выхода: " + getYear() + ", автор: " + author;
     }
 
     public boolean isClassic() {
-        return year < 1975;
+        return getYear() < 1975;
     }
 
 }
